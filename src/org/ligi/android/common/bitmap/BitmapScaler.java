@@ -7,10 +7,6 @@ import android.view.View;
 /**
  * class to scale bitmaps relative to other stuff
  *  
- * usage:
- *  you construct this class with a CheckBoxPreference and then add the Preferences  
- *  where you want to toggle enable/disable depending on the CheckBox 
- *  via addPreference2SetEnable(Preference p)
  * 
  * @author ligi ( aka: Marcus Bueschleb | mail: ligi at ligi dot de )
  *
