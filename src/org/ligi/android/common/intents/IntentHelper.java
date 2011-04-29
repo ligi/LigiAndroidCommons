@@ -74,6 +74,8 @@ public class IntentHelper {
 	 * 
 	 * @param ctx
 	 * @param action
+	 * 
+	 *  @return if we started the action or have to install stuff first
 	 */
 	public static boolean action4result(Activity ctx,String action,int requestCode) {
 		if (!isIntentAvailable(ctx.getPackageManager(),new Intent(action))) {
@@ -94,7 +96,8 @@ public class IntentHelper {
 		return pm.queryIntentActivities(i,PackageManager.MATCH_DEFAULT_ONLY).size() >0;
 	}
 	
-	public static void startActivityClass(Context ctx,Class activity_class) {
+	@SuppressWarnings("rawtypes") // have to use raw type here
+    public static void startActivityClass(Context ctx,Class activity_class) {
 		ctx.startActivity(new Intent(ctx,activity_class));
 	}
 }
