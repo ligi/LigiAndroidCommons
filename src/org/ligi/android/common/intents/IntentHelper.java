@@ -23,6 +23,8 @@ import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.view.View;
+import android.widget.Button;
 
 /**
  * some static functions to help with intents/actions
@@ -100,4 +102,30 @@ public class IntentHelper {
     public static void startActivityClass(Context ctx,Class activity_class) {
 		ctx.startActivity(new Intent(ctx,activity_class));
 	}
+	
+    public static class IntentStartOnClick implements View.OnClickListener{
+    	private Intent i;
+    	private Activity ctx;
+    	
+    	public IntentStartOnClick(Intent i,Activity ctx) {
+    		this.i=i;
+    		this.ctx=ctx;
+    	}
+
+		public void onClick(View v) {
+			 ctx.startActivity(i);
+		}
+		
+		public void bind2view(Button btn) {
+			if (btn!=null)
+				btn.setOnClickListener(this);
+		}
+		public void bind2view(int resId) {
+			bind2view((Button)ctx.findViewById(resId));
+		}
+		public void bind2view(int resId,View parent) {
+			bind2view((Button)parent.findViewById(resId));
+		}
+
+    }
 }
