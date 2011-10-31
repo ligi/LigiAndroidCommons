@@ -1,32 +1,28 @@
 package org.ligi.android.commons;
 
-import android.content.Context;
 import android.widget.SeekBar;
 
 /**
- * a widget extending SeekBar to have a minimum
+ * a class wrapping SeekBar to have a minimum
  * 
  * @author ligi
  *
  */
-public class SeekBarMinMax extends SeekBar {
-
+public class SeekBarMinMax {
+	private SeekBar mySeekBar;
 	private int min=0;
-	
 
-	public SeekBarMinMax(Context context,int min,int max) {
-		super(context);
+	public SeekBarMinMax(SeekBar seek_bar,int min,int max) {
+		mySeekBar=seek_bar;
 		this.min=min;
-		this.setMax(max-min);
+		mySeekBar.setMax(max-min);
 	}
 	
-	@Override
 	public synchronized int getProgress() {
-		return super.getProgress()+min;
+		return mySeekBar.getProgress()+min;
 	}
 
-	@Override
 	public synchronized void setProgress(int progress) {
-		super.setProgress(progress-min);
+		mySeekBar.setProgress(progress-min);
 	}
 }
