@@ -1,4 +1,4 @@
-package org.ligi.android.commons;
+package org.ligi.android.common;
 
 import android.content.Context;
 import android.widget.SeekBar;
