@@ -21,12 +21,20 @@ public class SeekBarMinMax extends SeekBar {
 	}
 	
 	@Override
-	public synchronized int getProgress() {
+	public  int getProgress() {
 		return super.getProgress()+min;
 	}
 
+	public synchronized void setProgress2(int progress) {
+		//Log.i("setprogress2"+(progress));
+	}	
 	@Override
 	public synchronized void setProgress(int progress) {
-		super.setProgress(progress-min);
+		//Log.i("setprogress"+(progress-min));
+		if ((progress>=min)&&(progress<=this.getMax()+min))
+			setProgress2(progress-min);
+		else
+			setProgress2(0);
+		super.setProgress(0);
 	}
 }

@@ -8,7 +8,7 @@ import android.widget.SimpleCursorAdapter;
 public class LinkAndDescriptionAdapter extends SimpleCursorAdapter {
 
 	
-	public static SimpleCursorAdapter createByArray(Context ctx,LinkWithDescription[] links) {
+	public static SimpleCursorAdapter createByArray(Context ctx,LinkWithDescription[] links,int resid) {
 		  final String[] matrix  = { "_id","name", "value" };
 		    final String[] columns = {"name", "value" };
 		    final int[]    layouts = { android.R.id.text1, android.R.id.text2 };
@@ -19,7 +19,7 @@ public class LinkAndDescriptionAdapter extends SimpleCursorAdapter {
 		    	cursor.addRow(new Object[] {i++, link.getDescription(),link.getURL()});
 		    
 		    return new SimpleCursorAdapter(ctx,
-					android.R.layout.two_line_list_item,
+		    		resid,
 					cursor,
 					columns,layouts);
 	}
