@@ -56,6 +56,17 @@ public class IntentHelper {
 		return true;
 	}
 	
+	public static void goToMarketPackage(final Context ctx,String package_name) {
+		ctx.startActivity(new Intent().setAction(Intent.ACTION_VIEW)
+				.setData(Uri.parse("market://details?id="+package_name)));
+	}
+	
+	public static void goToMarketSearch(final Context ctx,String query) {
+		ctx.startActivity(new Intent().setAction(Intent.ACTION_VIEW)
+		        .setData(Uri.parse("market://search?q=" + query)));
+	}
+	
+	
 	
 	public static void open_market_for_missing_action(final Context ctx,final String action) {
 		new AlertDialog.Builder(ctx).setTitle("App not found")
@@ -63,8 +74,7 @@ public class IntentHelper {
 		 .setPositiveButton("OK", new OnClickListener() {
 
 			public void onClick(DialogInterface arg0, int arg1) {
-				ctx.startActivity(new Intent().setAction(Intent.ACTION_VIEW)
-		        .setData(Uri.parse("market://search?q=" + action)));
+				goToMarketPackage(ctx,action);
 			}
 			 
 		 })
