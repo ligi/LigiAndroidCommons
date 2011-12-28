@@ -105,7 +105,31 @@ public class IntentHelper {
 	 * @return
 	 */
 	public static boolean isIntentAvailable(PackageManager pm,Intent i) {
-		return pm.queryIntentActivities(i,PackageManager.MATCH_DEFAULT_ONLY).size() >0;
+		return isIntentAvailable( pm,i,PackageManager.MATCH_DEFAULT_ONLY);
+	}
+	
+	public static boolean isIntentAvailable(PackageManager pm,Intent i,int flags) {
+		return pm.queryIntentActivities(i,flags).size() >0;
+	}
+	
+	/**
+	 * Indicates whether the specified action can be used as an service. This
+	 * method queries the package manager for installed packages that can
+	 * respond to an service with the specified action. If no suitable package is
+	 * found, this method returns false.
+	 * 
+	 * @param pm
+	 * @param i
+	 * @param flags ( default PackageManager.MATCH_DEFAULT_ONLY )
+	 * 
+	 * @return
+	 */
+	public static boolean isServiceAvailable(Intent i,PackageManager pm) {
+		return pm.queryIntentServices(i,PackageManager.MATCH_DEFAULT_ONLY).size() >0;
+	}
+	
+	public static boolean isServiceAvailable(Intent i,PackageManager pm,int flags) {
+		return pm.queryIntentServices(i,flags).size() >0;
 	}
 	
 	@SuppressWarnings("rawtypes") // have to use raw type here
