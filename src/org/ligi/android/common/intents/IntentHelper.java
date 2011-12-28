@@ -94,6 +94,16 @@ public class IntentHelper {
 		return true;
 	}
 
+	/**
+	 * Indicates whether the specified action can be used as an intent. This
+	 * method queries the package manager for installed packages that can
+	 * respond to an intent with the specified action. If no suitable package is
+	 * found, this method returns false.
+	 * 
+	 * @param pm
+	 * @param i
+	 * @return
+	 */
 	public static boolean isIntentAvailable(PackageManager pm,Intent i) {
 		return pm.queryIntentActivities(i,PackageManager.MATCH_DEFAULT_ONLY).size() >0;
 	}
