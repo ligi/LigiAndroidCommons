@@ -20,7 +20,7 @@ public class ActivityOrientationLocker {
             	activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
             } else {
                 int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
-            if(rotation == android.view.Surface.ROTATION_90|| rotation == android.view.Surface.ROTATION_180){
+                if(rotation == android.view.Surface.ROTATION_90|| rotation == android.view.Surface.ROTATION_180){
             		activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT);
                 } else {
                 	activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
